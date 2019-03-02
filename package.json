@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-tidio-additional-rules",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Additional eslint rules used in Tidio",
   "keywords": [
     "eslint",
