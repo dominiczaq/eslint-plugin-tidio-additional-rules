@@ -20,7 +20,8 @@ ruleTester.run('imports-order-for-less-files', rule, {
   valid: [
     "import moment from 'moment'; import 'react'; import './test.less';",
     "import moment from 'moment'; import { test } from './test';import './test.less';",
-    "import moment from 'moment'; import { test } from './test'; import './test.less';import './test2.less';"
+    "import moment from 'moment'; import { test } from './test'; import './test.less';import './test2.less';",
+    "import moment from 'moment'; import 'react'; import './test.less'; import testImage from './image.png';",
   ],
 
   invalid: [
@@ -30,7 +31,7 @@ ruleTester.run('imports-order-for-less-files', rule, {
       errors: [
         {
           message:
-            'Less files should be imported as last ones - "./styles.less"',
+            'Less files should be imported after js files and libraries - "./styles.less"',
           type: 'ImportDeclaration'
         }
       ]
@@ -41,7 +42,7 @@ ruleTester.run('imports-order-for-less-files', rule, {
       errors: [
         {
           message:
-            'Less files should be imported as last ones - "./styles.less"',
+            'Less files should be imported after js files and libraries - "./styles.less"',
           type: 'ImportDeclaration'
         }
       ]
@@ -52,7 +53,7 @@ ruleTester.run('imports-order-for-less-files', rule, {
       errors: [
         {
           message:
-            'Less files should be imported as last ones - "./styles.less"',
+            'Less files should be imported after js files and libraries - "./styles.less"',
           type: 'ImportDeclaration'
         }
       ]
@@ -63,11 +64,11 @@ ruleTester.run('imports-order-for-less-files', rule, {
       errors: [
         {
           message:
-            'Less files should be imported as last ones - "./styles.less"',
+            'Less files should be imported after js files and libraries - "./styles.less"',
           type: 'ImportDeclaration'
         },
         {
-          message: 'Less files should be imported as last ones - "./test.less"',
+          message: 'Less files should be imported after js files and libraries - "./test.less"',
           type: 'ImportDeclaration'
         }
       ]
@@ -78,7 +79,7 @@ ruleTester.run('imports-order-for-less-files', rule, {
       errors: [
         {
           message:
-            'Less files should be imported as last ones - "./styles.less"',
+            'Less files should be imported after js files and libraries - "./styles.less"',
           type: 'ImportDeclaration'
         }
       ]
