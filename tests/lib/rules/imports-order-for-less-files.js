@@ -83,6 +83,17 @@ ruleTester.run('imports-order-for-less-files', rule, {
           type: 'ImportDeclaration'
         }
       ]
-    }
+      },
+      {
+          code:
+              "import moment from 'moment';import './styles.less'; import test from '../../../../../test';",
+          errors: [
+              {
+                  message:
+                      'Less files should be imported after js files and libraries - "./styles.less"',
+                  type: 'ImportDeclaration'
+              }
+          ]
+      }
   ]
 });
