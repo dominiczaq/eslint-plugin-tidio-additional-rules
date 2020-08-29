@@ -43,6 +43,10 @@ ruleTester.run('prefer-function-declaration-in-actions', rule, {
         };
         }`,
       filename: 'actions.js'
+    },
+    {
+      code: `export const someRandomExport = () => {}`,
+      filename: 'some/path/with/actions/file.js'
     }
   ],
 
