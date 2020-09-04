@@ -3,7 +3,7 @@
  * @author tidio-globals-should-be-grouped
  */
 'use strict';
-
+const helpers = require('../../../lib/rules/helpers');
 //------------------------------------------------------------------------------
 // Requirements
 //------------------------------------------------------------------------------
@@ -31,6 +31,7 @@ ruleTester.run('tidio-globals-should-be-grouped', rule, {
     import visitorStoreSelectors from 'store/visitors/selectors';
     import projectStoreSelectors from 'store/project/selectors';
     import design from 'design';`,
+    ,
     `import React from 'react';
     import operatorsStore from 'store/operators/selectors';
     import visitorsReducer from 'store/visitors';
@@ -38,7 +39,19 @@ ruleTester.run('tidio-globals-should-be-grouped', rule, {
     import visitorStoreSelectors from 'store/visitors/selectors';
     import store from 'store';
     import projectStoreSelectors from 'store/project/selectors';
-    import design from 'design';`
+    import design from 'design';`,
+    {
+      code: `import React from 'react';
+        import store2 from 'store';
+      import store from 'test';
+      import operatorsStore from 'test/operators/selectors';
+      import visitorsReducer from 'test/visitors';
+      import visitorStoreActions from 'test/visitors/actions';
+      import visitorStoreSelectors from 'test/visitors/selectors';
+      import projectStoreSelectors from 'test/project/selectors';
+      import design from 'design';`,
+      options: [{ modules: ['test', 'design'] }]
+    }
   ],
 
   invalid: [
@@ -107,6 +120,26 @@ ruleTester.run('tidio-globals-should-be-grouped', rule, {
       errors: [
         {
           message: "'store' import should occur after 'store/typings/two'",
+          type: 'ImportDeclaration'
+        }
+      ]
+    },
+    {
+      code: `import store1 from 'store/typings/one';
+      import react from 'react';
+        import store from 'store';
+        import store2 from 'store/typings/two';
+        import utils from 'utils';
+        import design from 'design';
+        import date from 'utils/date'`,
+      options: [
+        {
+          modules: ['utils', 'design']
+        }
+      ],
+      errors: [
+        {
+          message: "'design' import should occur after 'utils/date'",
           type: 'ImportDeclaration'
         }
       ]

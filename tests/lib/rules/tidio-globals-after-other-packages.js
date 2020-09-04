@@ -94,6 +94,24 @@ ruleTester.run('tidio-globals-after-other-packages', rule, {
           type: 'ImportDeclaration'
         }
       ]
+    },
+    {
+      code: `import React from 'react';
+      import store from 'store';
+      import utils from 'utils';
+      import immutable from 'immutable';
+      import test from 'jest';`,
+      options: [
+        {
+          modules: ['utils']
+        }
+      ],
+      errors: [
+        {
+          message: "'utils' import should occur after 'jest'",
+          type: 'ImportDeclaration'
+        }
+      ]
     }
   ]
 });
