@@ -25,7 +25,9 @@ ruleTester.run('lang-should-have-absolute-import', rule, {
     "import trans from 'lang'",
     "import trans from './lang'",
     "import { doesTranslationExist } from 'lang';",
-    "import trans, { doesTranslationExist } from 'lang';"
+    "import trans, { doesTranslationExist } from 'lang';",
+    "import nothingReally from '../modals/langDE';",
+    "import nothingReally from '../langPL';"
   ],
 
   invalid: [
