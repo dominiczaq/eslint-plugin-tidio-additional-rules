@@ -25,7 +25,9 @@ ruleTester.run('track-should-have-absolute-import', rule, {
     "import track from 'track'",
     "import track from './track'",
     "import { doesTracklationExist } from 'track';",
-    "import track, { doesTracklationExist } from 'track';"
+    "import track, { doesTracklationExist } from 'track';",
+    "import nothingReally from '../modals/tracking';",
+    "import nothingReally from '../trackHelper';"
   ],
 
   invalid: [
