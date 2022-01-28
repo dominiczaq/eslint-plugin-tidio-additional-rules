@@ -22,9 +22,9 @@
     "requireindex": "~1.2.0"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "^5.10.1",
-    "eslint": "~8.7.0",
-    "mocha": "^9.2.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "eslint": "^7.32.0",
+    "mocha": "^8.4.0",
     "prettier": "^2.5.1",
     "typescript": "^4.5.5"
   },
