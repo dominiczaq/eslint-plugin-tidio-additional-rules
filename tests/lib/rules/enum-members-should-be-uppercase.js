@@ -15,18 +15,18 @@ var rule = require('../../../lib/rules/enum-members-should-be-uppercase'),
 // Tests
 //------------------------------------------------------------------------------
 RuleTester.setDefaultConfig({
-  parser: '@typescript-eslint/parser',
+  parser: require.resolve('@typescript-eslint/parser'),
   parserOptions: {
     ecmaVersion: 6,
-    sourceType: 'module'
-  }
+    sourceType: 'module',
+  },
 });
 var ruleTester = new RuleTester();
 ruleTester.run('enum-members-should-be-uppercase', rule, {
   valid: [
     'enum Test { TESTNAME = "test" }',
     'enum Test { TESTNAME = "test", SECONDTEST = "Test2" }',
-    'enum Test { TESTNAME11 = "test" }'
+    'enum Test { TESTNAME11 = "test" }',
   ],
 
   invalid: [
@@ -35,27 +35,27 @@ ruleTester.run('enum-members-should-be-uppercase', rule, {
       errors: [
         {
           message: `Wrong enum member case "testname". It should be UPPERCASE.`,
-          type: 'TSEnumMember'
-        }
-      ]
+          type: 'TSEnumMember',
+        },
+      ],
     },
     {
       code: 'enum Test { TESTNAME = "test", second = "test2" }',
       errors: [
         {
           message: `Wrong enum member case "second". It should be UPPERCASE.`,
-          type: 'TSEnumMember'
-        }
-      ]
+          type: 'TSEnumMember',
+        },
+      ],
     },
     {
       code: 'enum Test { TestName = "test2" }',
       errors: [
         {
           message: `Wrong enum member case "TestName". It should be UPPERCASE.`,
-          type: 'TSEnumMember'
-        }
-      ]
-    }
-  ]
+          type: 'TSEnumMember',
+        },
+      ],
+    },
+  ],
 });

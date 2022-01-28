@@ -15,11 +15,11 @@ var rule = require('../../../lib/rules/enum-declaration-pascal-case'),
 // Tests
 //------------------------------------------------------------------------------
 RuleTester.setDefaultConfig({
-  parser: '@typescript-eslint/parser',
+  parser: require.resolve('@typescript-eslint/parser'),
   parserOptions: {
     ecmaVersion: 6,
-    sourceType: 'module'
-  }
+    sourceType: 'module',
+  },
 });
 var ruleTester = new RuleTester();
 ruleTester.run('enum-declaration-pascal-case', rule, {
@@ -28,7 +28,7 @@ ruleTester.run('enum-declaration-pascal-case', rule, {
     'enum ThisIsTest {}',
     'enum Test1 {}',
     'enum ThisIs2Test {}',
-    'enum ThisIsTestNumber2 {}'
+    'enum ThisIsTestNumber2 {}',
   ],
 
   invalid: [
@@ -37,27 +37,27 @@ ruleTester.run('enum-declaration-pascal-case', rule, {
       errors: [
         {
           message: `Wrong enum declaration identifier "test". It should be PascalCase.`,
-          type: 'TSEnumDeclaration'
-        }
-      ]
+          type: 'TSEnumDeclaration',
+        },
+      ],
     },
     {
       code: 'enum TEST {}',
       errors: [
         {
           message: `Wrong enum declaration identifier "TEST". It should be PascalCase.`,
-          type: 'TSEnumDeclaration'
-        }
-      ]
+          type: 'TSEnumDeclaration',
+        },
+      ],
     },
     {
       code: 'enum thisIsTest {}',
       errors: [
         {
           message: `Wrong enum declaration identifier "thisIsTest". It should be PascalCase.`,
-          type: 'TSEnumDeclaration'
-        }
-      ]
-    }
-  ]
+          type: 'TSEnumDeclaration',
+        },
+      ],
+    },
+  ],
 });

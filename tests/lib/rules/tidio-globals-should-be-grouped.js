@@ -50,8 +50,8 @@ ruleTester.run('tidio-globals-should-be-grouped', rule, {
       import visitorStoreSelectors from 'test/visitors/selectors';
       import projectStoreSelectors from 'test/project/selectors';
       import design from 'design';`,
-      options: [{ modules: ['test', 'design'] }]
-    }
+      options: [{ modules: ['test', 'design'] }],
+    },
   ],
 
   invalid: [
@@ -64,9 +64,9 @@ ruleTester.run('tidio-globals-should-be-grouped', rule, {
         {
           message:
             "'design' import should occur after 'store/visitors/selectors'",
-          type: 'ImportDeclaration'
-        }
-      ]
+          type: 'ImportDeclaration',
+        },
+      ],
     },
     {
       code: `import visitorsReducer from 'store/visitors/actions';
@@ -76,9 +76,9 @@ ruleTester.run('tidio-globals-should-be-grouped', rule, {
         {
           message:
             "'store/operators/selectors' import should occur after 'store/visitors/selectors'",
-          type: 'ImportDeclaration'
-        }
-      ]
+          type: 'ImportDeclaration',
+        },
+      ],
     },
     {
       code: `import visitorsSelectors from 'store/visitors/selectors';
@@ -94,24 +94,24 @@ ruleTester.run('tidio-globals-should-be-grouped', rule, {
       errors: [
         {
           message: "'store' import should occur after 'store/visitors/actions'",
-          type: 'ImportDeclaration'
+          type: 'ImportDeclaration',
         },
         {
           message:
             "'store/typings/immutableExtensions' import should occur after 'store/visitors/actions'",
-          type: 'ImportDeclaration'
+          type: 'ImportDeclaration',
         },
         {
           message:
             "'store/operators/selectors' import should occur after 'store/visitors/actions'",
-          type: 'ImportDeclaration'
+          type: 'ImportDeclaration',
         },
         {
           message:
             "'store/operators/actions' import should occur after 'store/visitors/actions'",
-          type: 'ImportDeclaration'
-        }
-      ]
+          type: 'ImportDeclaration',
+        },
+      ],
     },
     {
       code: `import store1 from 'store/typings/one';
@@ -120,9 +120,9 @@ ruleTester.run('tidio-globals-should-be-grouped', rule, {
       errors: [
         {
           message: "'store' import should occur after 'store/typings/two'",
-          type: 'ImportDeclaration'
-        }
-      ]
+          type: 'ImportDeclaration',
+        },
+      ],
     },
     {
       code: `import store1 from 'store/typings/one';
@@ -134,15 +134,15 @@ ruleTester.run('tidio-globals-should-be-grouped', rule, {
         import date from 'utils/date'`,
       options: [
         {
-          modules: ['utils', 'design']
-        }
+          modules: ['utils', 'design'],
+        },
       ],
       errors: [
         {
           message: "'design' import should occur after 'utils/date'",
-          type: 'ImportDeclaration'
-        }
-      ]
-    }
-  ]
+          type: 'ImportDeclaration',
+        },
+      ],
+    },
+  ],
 });

@@ -11,11 +11,11 @@ var rule = require('../../../lib/rules/prefer-type-reference-instead-of-inline-t
 // Tests
 //------------------------------------------------------------------------------
 RuleTester.setDefaultConfig({
-  parser: '@typescript-eslint/parser',
+  parser: require.resolve('@typescript-eslint/parser'),
   parserOptions: {
     ecmaVersion: 6,
-    sourceType: 'module'
-  }
+    sourceType: 'module',
+  },
 });
 
 var ruleTester = new RuleTester();
@@ -28,13 +28,13 @@ ruleTester.run(
         code: `
         function Foo({ foo, bar, baz }: { foo: string; bar: string; baz: string }) {}
         `,
-        filename: 'component.tsx'
+        filename: 'component.tsx',
       },
       {
         code: `
         const Foo = () => {}
         `,
-        filename: 'component.tsx'
+        filename: 'component.tsx',
       },
       {
         code: `
@@ -51,7 +51,7 @@ ruleTester.run(
           fizz
         }: FooProps) {}
         `,
-        filename: 'component.tsx'
+        filename: 'component.tsx',
       },
       {
         code: `
@@ -68,8 +68,8 @@ ruleTester.run(
           fizz
         }): FooProps => {};
         `,
-        filename: 'component.tsx'
-      }
+        filename: 'component.tsx',
+      },
     ],
 
     invalid: [
@@ -91,9 +91,9 @@ ruleTester.run(
         errors: [
           {
             message: `Prefer type reference instead of inline type annotation when number of parameters is greater than 3.`,
-            type: 'FunctionDeclaration'
-          }
-        ]
+            type: 'FunctionDeclaration',
+          },
+        ],
       },
       {
         code: `
@@ -113,10 +113,10 @@ ruleTester.run(
         errors: [
           {
             message: `Prefer type reference instead of inline type annotation when number of parameters is greater than 3.`,
-            type: 'ArrowFunctionExpression'
-          }
-        ]
-      }
-    ]
+            type: 'ArrowFunctionExpression',
+          },
+        ],
+      },
+    ],
   }
 );

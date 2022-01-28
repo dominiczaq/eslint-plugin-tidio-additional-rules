@@ -10,30 +10,30 @@ var rule = require('../../../lib/rules/require-const-in-action-creator-ts-functi
 // Tests
 //------------------------------------------------------------------------------
 RuleTester.setDefaultConfig({
-  parser: '@typescript-eslint/parser',
+  parser: require.resolve('@typescript-eslint/parser'),
   parserOptions: {
     ecmaVersion: 6,
-    sourceType: 'module'
-  }
+    sourceType: 'module',
+  },
 });
 var ruleTester = new RuleTester();
 ruleTester.run('require-const-in-action-creator-ts-function', rule, {
   valid: [
     {
       code: `export function fetchRegularCampaigns() {return <const>{type: "SOME-TYPE-ZIOM"};}`,
-      filename: 'actions.ts'
+      filename: 'actions.ts',
     },
     {
       code: `export function fetchRegularCampaigns() {return <const>{type: "SOME-TYPE"};}`,
-      filename: 'actionsTS.ts'
+      filename: 'actionsTS.ts',
     },
     {
       code: `export function fetchRegularCampaigns() {return {type: "SOME-TYPE"};}`,
-      filename: 'actions.js'
+      filename: 'actions.js',
     },
     {
       code: `export function fetchRegularCampaigns() {return {type: "SOME-TYPE"};}`,
-      filename: 'some/path/with/actions/file.js'
+      filename: 'some/path/with/actions/file.js',
     },
     {
       code: `export function saveNotifications(
@@ -45,22 +45,21 @@ ruleTester.run('require-const-in-action-creator-ts-function', rule, {
             hasNotificationSoundChanged,
         };
     }`,
-      filename: 'actions.ts'
-    }
+      filename: 'actions.ts',
+    },
   ],
 
   invalid: [
     {
-      code:
-        'export function fetchRegularCampaigns() {return {type: "SOME-TEST-TYPE"};}',
+      code: 'export function fetchRegularCampaigns() {return {type: "SOME-TEST-TYPE"};}',
       filename: 'actionsTS.ts',
       errors: [
         {
           message:
             'Return in TS action creator should use <const> before returned object',
-          type: 'ReturnStatement'
-        }
-      ]
-    }
-  ]
+          type: 'ReturnStatement',
+        },
+      ],
+    },
+  ],
 });
