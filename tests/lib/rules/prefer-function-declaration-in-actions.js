@@ -15,18 +15,18 @@ var rule = require('../../../lib/rules/prefer-function-declaration-in-actions'),
 // Tests
 //------------------------------------------------------------------------------
 RuleTester.setDefaultConfig({
-  parser: '@typescript-eslint/parser',
+  parser: require.resolve('@typescript-eslint/parser'),
   parserOptions: {
     ecmaVersion: 6,
-    sourceType: 'module'
-  }
+    sourceType: 'module',
+  },
 });
 var ruleTester = new RuleTester();
 ruleTester.run('prefer-function-declaration-in-actions', rule, {
   valid: [
     {
       code: `export const SOME_ACTION_TYPE_CONST = 'SOME_ACTION_TYPE_CONST'`,
-      filename: 'actions.js'
+      filename: 'actions.js',
     },
     {
       code: `export function someActionCreatorInTS() {
@@ -34,7 +34,7 @@ ruleTester.run('prefer-function-declaration-in-actions', rule, {
             type: SOME_ACTION_TYPE_CONST,
         };
         }`,
-      filename: 'actions.ts'
+      filename: 'actions.ts',
     },
     {
       code: `export function someActionCreator() {
@@ -42,12 +42,12 @@ ruleTester.run('prefer-function-declaration-in-actions', rule, {
             type: SOME_ACTION_TYPE_CONST,
         };
         }`,
-      filename: 'actions.js'
+      filename: 'actions.js',
     },
     {
       code: `export const someRandomExport = () => {}`,
-      filename: 'some/path/with/actions/file.js'
-    }
+      filename: 'some/path/with/actions/file.js',
+    },
   ],
 
   invalid: [
@@ -61,9 +61,9 @@ ruleTester.run('prefer-function-declaration-in-actions', rule, {
       errors: [
         {
           message: `Prefer function declaration instead of variable declaration when defining action creator.`,
-          type: 'ExportNamedDeclaration'
-        }
-      ]
+          type: 'ExportNamedDeclaration',
+        },
+      ],
     },
     {
       code: `export const someActionCreatorTS = () => {
@@ -75,9 +75,9 @@ ruleTester.run('prefer-function-declaration-in-actions', rule, {
       errors: [
         {
           message: `Prefer function declaration instead of variable declaration when defining action creator.`,
-          type: 'ExportNamedDeclaration'
-        }
-      ]
-    }
-  ]
+          type: 'ExportNamedDeclaration',
+        },
+      ],
+    },
+  ],
 });

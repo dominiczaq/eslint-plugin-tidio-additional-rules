@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-tidio-additional-rules",
-  "version": "0.16.0",
+  "version": "1.0.0",
   "description": "Additional eslint rules used in Tidio",
   "keywords": [
     "eslint",
@@ -15,20 +15,21 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha tests --recursive",
-    "test:watch": "mocha tests --recursive --watch"
+    "test:watch": "mocha tests --recursive --watch",
+    "test:single": "mocha tests"
   },
   "dependencies": {
-    "requireindex": "~1.1.0"
+    "requireindex": "~1.2.0"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "^3.8.0",
-    "eslint": "~4.18.2",
-    "mocha": "^5.2.0",
-    "prettier": "^1.15.2",
-    "typescript": "^3.9.7"
+    "@typescript-eslint/parser": "^4.33.0",
+    "eslint": "^7.32.0",
+    "mocha": "^8.4.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.5"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=10.0.0"
   },
   "license": "ISC"
 }

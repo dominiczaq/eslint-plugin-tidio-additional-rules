@@ -14,9 +14,9 @@ var rule = require('../../../lib/rules/eslint-plugin-disallow-literals-as-direct
 RuleTester.setDefaultConfig({
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
-    }
-  }
+      jsx: true,
+    },
+  },
 });
 //------------------------------------------------------------------------------
 // Tests
@@ -30,7 +30,7 @@ ruleTester.run(
     valid: [
       "<MyComponent>{trans('foo')}</MyComponent>",
       "<MyComponent>{trans('foo')}.</MyComponent>",
-      '<MyComponent>2.0</MyComponent>'
+      '<MyComponent>2.0</MyComponent>',
     ],
 
     invalid: [
@@ -40,9 +40,9 @@ ruleTester.run(
           {
             message:
               'Unexpected literal used as direct child of JSXElement - Foo',
-            type: 'Literal'
-          }
-        ]
+            type: 'JSXText',
+          },
+        ],
       },
       {
         code: '<MyComponent>Foo Bar Baz</MyComponent>',
@@ -50,9 +50,9 @@ ruleTester.run(
           {
             message:
               'Unexpected literal used as direct child of JSXElement - Foo Bar Baz',
-            type: 'Literal'
-          }
-        ]
+            type: 'JSXText',
+          },
+        ],
       },
       {
         code: '<MyComponent>Foo Bar Baz!</MyComponent>',
@@ -60,9 +60,9 @@ ruleTester.run(
           {
             message:
               'Unexpected literal used as direct child of JSXElement - Foo Bar Baz!',
-            type: 'Literal'
-          }
-        ]
+            type: 'JSXText',
+          },
+        ],
       },
       {
         code: '<MyComponent>Foo Bar Baz! 2.0</MyComponent>',
@@ -70,10 +70,10 @@ ruleTester.run(
           {
             message:
               'Unexpected literal used as direct child of JSXElement - Foo Bar Baz! 2.0',
-            type: 'Literal'
-          }
-        ]
-      }
-    ]
+            type: 'JSXText',
+          },
+        ],
+      },
+    ],
   }
 );
