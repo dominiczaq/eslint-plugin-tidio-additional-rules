@@ -8,7 +8,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/no-variables-in-error-classes-messages'),
+var rule = require('../../../lib/rules/error-class-declaration-name'),
     RuleTester = require('eslint').RuleTester;
 
 
@@ -22,26 +22,17 @@ RuleTester.setDefaultConfig({
     }
 });
 var ruleTester = new RuleTester();
-ruleTester.run('no-variables-in-error-classes-messages', rule, {
-    valid: [`new TestError("BYCZQ");`],
+ruleTester.run('error-class-declaration-name', rule, {
+    valid: [`class TestError extends Error {}`],
     invalid: [
         {
-            code:  `new TestError("BYCZQ" + hello);`,
+            code:  `class Test extends Error {}`,
             errors: [
                 {
-                    message: 'Error type class constructor message should not have any variables.',
-                    type: 'ExpressionStatement'
+                    message: 'Class that extends Error should have "Error" in class name.',
+                    type: 'ClassDeclaration'
                 }
             ]
         },
-        {
-            code: `new TestError(\`BYCZQ \${elo}\`);`,
-            errors: [
-                {
-                    message: 'Error type class constructor message should not have any variables.',
-                    type: 'ExpressionStatement'
-                }
-            ]
-        }
     ]
 });
