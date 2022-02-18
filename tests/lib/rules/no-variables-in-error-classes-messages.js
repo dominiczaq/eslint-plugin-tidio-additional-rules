@@ -29,7 +29,7 @@ ruleTester.run('no-variables-in-error-classes-messages', rule, {
             code:  `new TestError("BYCZQ" + hello);`,
             errors: [
                 {
-                    message: 'Error type class constructor message should not have any variables.',
+                    message: 'Variables shouldn\'t be used in error message.',
                     type: 'ExpressionStatement'
                 }
             ]
@@ -38,7 +38,7 @@ ruleTester.run('no-variables-in-error-classes-messages', rule, {
             code: `new TestError(\`BYCZQ \${elo}\`);`,
             errors: [
                 {
-                    message: 'Error type class constructor message should not have any variables.',
+                    message: 'Variables shouldn\'t be used in error message.',
                     type: 'ExpressionStatement'
                 }
             ]
