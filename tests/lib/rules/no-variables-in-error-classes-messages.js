@@ -30,7 +30,7 @@ ruleTester.run('no-variables-in-error-classes-messages', rule, {
             errors: [
                 {
                     message: 'Variables shouldn\'t be used in error message.',
-                    type: 'ExpressionStatement'
+                    type: 'NewExpression'
                 }
             ]
         },
@@ -39,7 +39,7 @@ ruleTester.run('no-variables-in-error-classes-messages', rule, {
             errors: [
                 {
                     message: 'Variables shouldn\'t be used in error message.',
-                    type: 'ExpressionStatement'
+                    type: 'NewExpression'
                 }
             ]
         }
