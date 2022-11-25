@@ -17,7 +17,7 @@ RuleTester.setDefaultConfig({
   },
 });
 var ruleTester = new RuleTester();
-ruleTester.run('no-components-import-in-store-or-utils', rule, {
+ruleTester.run('no-universal-imports-in-store-or-utils', rule, {
   valid: [
     {
       code: `import Something from 'components/Test'`,
