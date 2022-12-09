@@ -23,7 +23,7 @@ RuleTester.setDefaultConfig({
 });
 var ruleTester = new RuleTester();
 ruleTester.run('no-variables-in-error-classes-messages', rule, {
-    valid: [`new TestError("BYCZQ");`, `new TestError("BYCZQ", {"projectId": hello});`],
+    valid: [`new TestError("BYCZQ");`, `new TestError("BYCZQ", {"projectId": hello});`, `new TestError();`],
     invalid: [
         {
             code:  `new TestError("BYCZQ" + hello);`,
