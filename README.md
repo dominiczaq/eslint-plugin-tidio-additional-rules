@@ -1,3 +1,6 @@
+# DEPRECIATED
+This is no longer maintained, package moved to TidioLTD org - https://github.com/TidioLtd/eslint-plugin-tidio-additional-rules
+
 # eslint-plugin-tidio-additional-rules
 
 ## Installation
